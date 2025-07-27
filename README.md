@@ -1,5 +1,5 @@
 # BlockbenchPluginMeshToSplats
-Plugin for BlockBench to instance 'splat' triangles with uniform uvs over the triangles of a source mesh for the purpose of generating pseudo gaussian-splat effects on imported sculpts.
+Early WIP Plugin for BlockBench to instance 'splat' triangles with uniform uvs over the triangles of a source mesh for the purpose of generating pseudo gaussian-splat effects on imported sculpts.
 # Installation
 To install this plugin from within blockbench:
 
