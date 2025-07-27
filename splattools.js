@@ -2,7 +2,7 @@ let meshToSplatMeshButton;
 
 Plugin.register('splattools', {
 	title: 'Splat tools',
-	author: 'Pierre',
+	author: 'Malik12tree, Pierre',
 	description: 'Tools for turning triangulated mesh sculpts into splat-texture meshes',
 	icon: 'fa-snowflake',
 	version: '0.0.1',
