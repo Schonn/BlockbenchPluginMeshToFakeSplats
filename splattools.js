@@ -5,7 +5,7 @@ Plugin.register('splattools', {
 	author: 'Malik12tree, Pierre',
 	description: 'Tools for turning triangulated mesh sculpts into splat-texture meshes',
 	icon: 'fa-snowflake',
-	version: '0.0.1',
+	version: '0.0.2',
 	variant: 'both',
     onload() {
 		meshToSplatMeshButton = new Action('instance_splat_tris', {
@@ -39,7 +39,10 @@ Plugin.register('splattools', {
 						for (let splatVertexNumber = 0; splatVertexNumber < 3; splatVertexNumber++) {
 							splatVertexIDs[splatVertexNumber] = splattedMesh.addVertices(splatVertObjects[splatVertexNumber])[0];
 						}
-						let splatFace = new MeshFace(splattedMesh,{vertices: [splatVertexIDs[0],splatVertexIDs[1],splatVertexIDs[2]]});
+						let firstVertexID = splatVertexIDs[0];
+						let secondVertexID = splatVertexIDs[1];
+						let thirdVertexID = splatVertexIDs[2];
+						let splatFace = new MeshFace(splattedMesh,{vertices: [firstVertexID,secondVertexID,thirdVertexID], uv:{[firstVertexID]:[0,Project.texture_height],[secondVertexID]:[Project.texture_width,Project.texture_height],[thirdVertexID]:[Project.texture_width * 0.5,0]}});
 						splattedMesh.addFaces(splatFace);
 					}
 					splattedMesh.init();
