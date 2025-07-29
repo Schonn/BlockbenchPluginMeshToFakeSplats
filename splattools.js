@@ -5,7 +5,7 @@ Plugin.register('splattools', {
 	author: 'Malik12tree, Pierre',
 	description: 'Tools for turning triangulated mesh sculpts into splat-texture meshes',
 	icon: 'fa-snowflake',
-	version: '0.0.2',
+	version: '0.0.1',
 	variant: 'both',
     onload() {
 		meshToSplatMeshButton = new Action('instance_splat_tris', {
@@ -33,7 +33,7 @@ Plugin.register('splattools', {
 						const secondVertexToUseInScalingPair = [1,2,0];
 						for (let vertexPairNumber = 0; vertexPairNumber < 3; vertexPairNumber++) {
 							for (let vertPairScaleAxis = 0; vertPairScaleAxis < 3; vertPairScaleAxis++) {
-								splatVertObjects[vertexPairNumber][vertPairScaleAxis] = faceVertObjects[vertexPairNumber][vertPairScaleAxis] + (faceVertObjects[vertexPairNumber][vertPairScaleAxis] - faceVertObjects[secondVertexToUseInScalingPair[vertexPairNumber]][vertPairScaleAxis]) * 0.5;
+								splatVertObjects[vertexPairNumber][vertPairScaleAxis] = faceVertObjects[vertexPairNumber][vertPairScaleAxis] + (faceVertObjects[vertexPairNumber][vertPairScaleAxis] - faceVertObjects[secondVertexToUseInScalingPair[vertexPairNumber]][vertPairScaleAxis]);
 							}
 						}
 						for (let splatVertexNumber = 0; splatVertexNumber < 3; splatVertexNumber++) {
