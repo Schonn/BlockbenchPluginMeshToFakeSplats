@@ -22,3 +22,9 @@ Select your imported mesh.
 Click on 'Tools > Create splat instance mesh'.
 
 Your pseudo-splats mesh will appear in the BlockBench outliner with the '_splats' postfix.
+
+Click on 'Import Texture' in the 'TEXTURES' panel and import a transparent texture to use as a pseudo-splat texture. A rounded square with sparsely dithered edges and no feathering or antialiasing against a transparent background may work well. You may wish to create the splat texture centered, at the bottom of the transparent image and at roughly 50% of the image size so it will fit within each splat UV triangle.
+
+Right click on your imported texture in the 'TEXTURES' panel and click on 'Apply to Elements'.
+
+Select all of the UV islands in the 'UV' panel and scale them all up together so your splat texture fits inside the triangle.
