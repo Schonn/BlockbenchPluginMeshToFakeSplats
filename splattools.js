@@ -5,7 +5,7 @@ Plugin.register('splattools', {
 	author: 'Malik12tree, Pierre',
 	description: 'Tools for turning triangulated mesh sculpts into splat-texture meshes',
 	icon: 'fa-snowflake',
-	version: '0.0.1',
+	version: '0.0.2',
 	variant: 'both',
     onload() {
 		meshToSplatMeshButton = new Action('instance_splat_tris', {
@@ -33,15 +33,25 @@ Plugin.register('splattools', {
 						const secondVertexToUseInScalingPair = [1,2,0];
 						for (let vertexPairNumber = 0; vertexPairNumber < 3; vertexPairNumber++) {
 							for (let vertPairScaleAxis = 0; vertPairScaleAxis < 3; vertPairScaleAxis++) {
-								splatVertObjects[vertexPairNumber][vertPairScaleAxis] = faceVertObjects[vertexPairNumber][vertPairScaleAxis] + (faceVertObjects[vertexPairNumber][vertPairScaleAxis] - faceVertObjects[secondVertexToUseInScalingPair[vertexPairNumber]][vertPairScaleAxis]);
+								splatVertObjects[vertexPairNumber][vertPairScaleAxis] = faceVertObjects[vertexPairNumber][vertPairScaleAxis] + (faceVertObjects[vertexPairNumber][vertPairScaleAxis] - faceVertObjects[secondVertexToUseInScalingPair[vertexPairNumber]][vertPairScaleAxis]) * 3;
 							}
 						}
 						for (let splatVertexNumber = 0; splatVertexNumber < 3; splatVertexNumber++) {
 							splatVertexIDs[splatVertexNumber] = splattedMesh.addVertices(splatVertObjects[splatVertexNumber])[0];
 						}
+						let vertOrderType = Math.floor(Math.random() * 3);
 						let firstVertexID = splatVertexIDs[0];
 						let secondVertexID = splatVertexIDs[1];
 						let thirdVertexID = splatVertexIDs[2];
+						if (vertOrderType == 1) {
+							firstVertexID = splatVertexIDs[2];
+							secondVertexID = splatVertexIDs[0];
+							thirdVertexID = splatVertexIDs[1];
+						} else if (vertOrderType == 2) {
+							firstVertexID = splatVertexIDs[1];
+							secondVertexID = splatVertexIDs[2];
+							thirdVertexID = splatVertexIDs[0];
+						}
 						let splatFace = new MeshFace(splattedMesh,{vertices: [firstVertexID,secondVertexID,thirdVertexID], uv:{[firstVertexID]:[0,Project.texture_height],[secondVertexID]:[Project.texture_width,Project.texture_height],[thirdVertexID]:[Project.texture_width * 0.5,0]}});
 						splattedMesh.addFaces(splatFace);
 					}
